@@ -27,18 +27,24 @@ public class AccountsProvider {
     private String secretKey;
 
     public AllAccountResponses getAllAccounts() {
-        final Algorithm algorithm = Algorithm.HMAC256(secretKey);
-        final String jwtToken = JWT.create()
-            .withClaim("access_key", accessKey)
-            .withClaim("nonce", UUID.randomUUID().toString())
-            .sign(algorithm);
-
+        final String jwtToken = decideJwtToken();
         final String authenticationToken = "Bearer " + jwtToken;
         final CloseableHttpClient client = HttpClientBuilder.create().build();
         final HttpGet request = new HttpGet(serverUrl + "/v1/accounts");
         request.setHeader("Content-Type", "application/json");
         request.addHeader("Authorization", authenticationToken);
+        return requestAllAccounts(client, request);
+    }
 
+    private String decideJwtToken() {
+        final Algorithm algorithm = Algorithm.HMAC256(secretKey);
+        return JWT.create()
+            .withClaim("access_key", accessKey)
+            .withClaim("nonce", UUID.randomUUID().toString())
+            .sign(algorithm);
+    }
+
+    private AllAccountResponses requestAllAccounts(CloseableHttpClient client, HttpGet request) {
         try {
             final CloseableHttpResponse response = client.execute(request);
             final HttpEntity entity = response.getEntity();
