@@ -32,20 +32,19 @@ public class AccountsProvider {
             .sign(algorithm);
 
         final String authenticationToken = "Bearer " + jwtToken;
-        try {
-            final CloseableHttpClient client = HttpClientBuilder.create().build();
-            final HttpGet request = new HttpGet(serverUrl + "/v1/accounts");
-            request.setHeader("Content-Type", "application/json");
-            request.addHeader("Authorization", authenticationToken);
+        final CloseableHttpClient client = HttpClientBuilder.create().build();
+        final HttpGet request = new HttpGet(serverUrl + "/v1/accounts");
+        request.setHeader("Content-Type", "application/json");
+        request.addHeader("Authorization", authenticationToken);
 
+        try {
             final CloseableHttpResponse response = client.execute(request);
             final HttpEntity entity = response.getEntity();
             String result = EntityUtils.toString(entity, "UTF-8");
             result = result.substring(1, result.length() - 1);
             return new ObjectMapper().readValue(result, AllAccountResponse.class);
         } catch (IOException e) {
-            e.printStackTrace();
+            throw new InvalidIOException("라이브러리 예외가 발생하였습니다.");
         }
-        return null;
     }
 }
