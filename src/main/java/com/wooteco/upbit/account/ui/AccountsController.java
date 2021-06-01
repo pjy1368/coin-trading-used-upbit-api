@@ -1,7 +1,6 @@
 package com.wooteco.upbit.account.ui;
 
-import com.wooteco.upbit.account.api.AccountsProvider;
-import com.wooteco.upbit.account.dto.AllAccountResponse;
+import com.wooteco.upbit.account.api.application.AccountsProvider;
 import com.wooteco.upbit.account.dto.AllAccountResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;

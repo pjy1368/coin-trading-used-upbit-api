@@ -12,5 +12,6 @@ import lombok.NoArgsConstructor;
 @Getter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
 public class AllAccountResponses {
+
     private List<AllAccountResponse> allAccountResponses;
 }
