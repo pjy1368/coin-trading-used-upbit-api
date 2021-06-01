@@ -4,7 +4,9 @@ import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;
 import com.fasterxml.jackson.databind.ObjectMapper;
 import com.wooteco.upbit.account.dto.AllAccountResponse;
+import com.wooteco.upbit.account.dto.AllAccountResponses;
 import java.io.IOException;
+import java.util.List;
 import java.util.UUID;
 import org.apache.http.HttpEntity;
 import org.apache.http.client.methods.CloseableHttpResponse;
@@ -24,7 +26,7 @@ public class AccountsProvider {
     @Value("${security.secret-key}")
     private String secretKey;
 
-    public AllAccountResponse getAllAccounts() {
+    public AllAccountResponses getAllAccounts() {
         final Algorithm algorithm = Algorithm.HMAC256(secretKey);
         final String jwtToken = JWT.create()
             .withClaim("access_key", accessKey)
@@ -40,10 +42,13 @@ public class AccountsProvider {
         try {
             final CloseableHttpResponse response = client.execute(request);
             final HttpEntity entity = response.getEntity();
-            String result = EntityUtils.toString(entity, "UTF-8");
-            result = result.substring(1, result.length() - 1);
-            return new ObjectMapper().readValue(result, AllAccountResponse.class);
+            final String result = EntityUtils.toString(entity, "UTF-8");
+            final ObjectMapper mapper = new ObjectMapper();
+            final List<AllAccountResponse> allAccountResponses = mapper
+                .readValue(result, mapper.getTypeFactory().constructCollectionType(List.class, AllAccountResponse.class));
+            return new AllAccountResponses(allAccountResponses);
         } catch (IOException e) {
+            e.printStackTrace();
             throw new InvalidIOException("라이브러리 예외가 발생하였습니다.");
         }
     }

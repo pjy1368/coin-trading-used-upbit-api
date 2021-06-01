@@ -2,20 +2,15 @@ package com.wooteco.upbit.account.dto;
 
 import com.fasterxml.jackson.databind.PropertyNamingStrategies;
 import com.fasterxml.jackson.databind.annotation.JsonNaming;
+import java.util.List;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
 @AllArgsConstructor
+@NoArgsConstructor
 @Getter
 @JsonNaming(PropertyNamingStrategies.SnakeCaseStrategy.class)
-public class AllAccountResponse {
-
-    private String currency;
-    private String balance;
-    private String locked;
-    private String avgBuyPrice;
-    private boolean avgBuyPriceModified;
-    private String unitCurrency;
+public class AllAccountResponses {
+    private List<AllAccountResponse> allAccountResponses;
 }

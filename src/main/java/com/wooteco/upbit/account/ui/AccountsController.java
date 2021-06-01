@@ -2,6 +2,7 @@ package com.wooteco.upbit.account.ui;
 
 import com.wooteco.upbit.account.api.AccountsProvider;
 import com.wooteco.upbit.account.dto.AllAccountResponse;
+import com.wooteco.upbit.account.dto.AllAccountResponses;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
@@ -16,7 +17,7 @@ public class AccountsController {
     }
 
     @GetMapping("/accounts")
-    public ResponseEntity<AllAccountResponse> showAllAccounts() {
+    public ResponseEntity<AllAccountResponses> showAllAccounts() {
         return ResponseEntity.ok(accountsProvider.getAllAccounts());
     }
 }
