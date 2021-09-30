@@ -1,18 +1,27 @@
 package com.wooteco.upbit.account.dto;
 
+import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-@NoArgsConstructor
-@AllArgsConstructor
 @Getter
-public class AllAccountResponse {
+@AllArgsConstructor
+@NoArgsConstructor
+public class AccountResponse {
 
     private String currency;
+
     private String balance;
+
     private String locked;
+
+    @JsonProperty("avg_buy_price")
     private String avgBuyPrice;
-    private boolean avgBuyPriceModified;
+
+    @JsonProperty("avg_buy_price_modified")
+    private Boolean avgBuyPriceModified;
+
+    @JsonProperty("unit_currency")
     private String unitCurrency;
 }
