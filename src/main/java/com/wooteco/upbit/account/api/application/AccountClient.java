@@ -18,7 +18,7 @@ import org.springframework.web.client.RestTemplate;
 
 @RequiredArgsConstructor
 @Component
-public class AccountsClient {
+public class AccountClient {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final RestTemplate restTemplate;

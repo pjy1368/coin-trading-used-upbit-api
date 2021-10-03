@@ -1,7 +1,7 @@
 package com.wooteco.upbit.account.ui;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wooteco.upbit.account.api.application.AccountsClient;
+import com.wooteco.upbit.account.api.application.AccountClient;
 import com.wooteco.upbit.account.dto.AccountResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -11,12 +11,12 @@ import org.springframework.web.bind.annotation.RestController;
 
 @RequiredArgsConstructor
 @RestController
-public class AccountsController {
+public class AccountController {
 
-    private final AccountsClient accountsClient;
+    private final AccountClient accountClient;
 
     @GetMapping("/accounts")
     public ResponseEntity<List<AccountResponse>> showAllAccounts() throws JsonProcessingException {
-        return ResponseEntity.ok(accountsClient.getAccounts());
+        return ResponseEntity.ok(accountClient.getAccounts());
     }
 }
