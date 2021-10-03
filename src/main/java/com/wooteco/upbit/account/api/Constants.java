@@ -4,7 +4,7 @@ public final class Constants {
 
     public static final String SEVER_URL = "https://api.upbit.com";
 
-    public static final String API_VERSION = "/v";
+    public static final String API_VERSION = "/v1";
 
     public static final String ACCOUNTS_URL = "/accounts";
 
