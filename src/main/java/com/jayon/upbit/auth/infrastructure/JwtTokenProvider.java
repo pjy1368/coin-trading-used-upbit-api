@@ -1,4 +1,4 @@
-package com.wooteco.upbit.auth.infrastructure;
+package com.jayon.upbit.auth.infrastructure;
 
 import com.auth0.jwt.JWT;
 import com.auth0.jwt.algorithms.Algorithm;

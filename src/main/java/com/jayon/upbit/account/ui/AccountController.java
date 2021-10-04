@@ -1,8 +1,8 @@
-package com.wooteco.upbit.account.ui;
+package com.jayon.upbit.account.ui;
 
 import com.fasterxml.jackson.core.JsonProcessingException;
-import com.wooteco.upbit.account.api.application.AccountClient;
-import com.wooteco.upbit.account.dto.AccountResponse;
+import com.jayon.upbit.account.api.application.AccountClient;
+import com.jayon.upbit.account.dto.AccountResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;

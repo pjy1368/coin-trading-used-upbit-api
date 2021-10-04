@@ -1,4 +1,4 @@
-package com.wooteco.upbit.account.dto;
+package com.jayon.upbit.account.dto;
 
 import com.fasterxml.jackson.annotation.JsonProperty;
 import lombok.AllArgsConstructor;

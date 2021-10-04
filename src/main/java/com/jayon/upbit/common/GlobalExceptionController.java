@@ -1,4 +1,4 @@
-package com.wooteco.upbit.common;
+package com.jayon.upbit.common;
 
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;

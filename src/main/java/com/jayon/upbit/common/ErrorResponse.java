@@ -1,4 +1,4 @@
-package com.wooteco.upbit.common;
+package com.jayon.upbit.common;
 
 import lombok.AllArgsConstructor;
 import lombok.Getter;

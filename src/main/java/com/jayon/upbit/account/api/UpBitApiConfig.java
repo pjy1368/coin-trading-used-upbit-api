@@ -1,4 +1,4 @@
-package com.wooteco.upbit.account.api;
+package com.jayon.upbit.account.api;
 
 import org.springframework.boot.web.client.RestTemplateBuilder;
 import org.springframework.context.annotation.Bean;

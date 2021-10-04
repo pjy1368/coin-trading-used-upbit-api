@@ -1,4 +1,4 @@
-package com.wooteco.upbit;
+package com.jayon.upbit;
 
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;

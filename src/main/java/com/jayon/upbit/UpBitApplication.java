@@ -1,4 +1,4 @@
-package com.wooteco.upbit;
+package com.jayon.upbit;
 
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;

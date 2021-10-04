@@ -1,4 +1,4 @@
-package com.wooteco.upbit.account.api;
+package com.jayon.upbit.account.api;
 
 public final class Constants {
 
