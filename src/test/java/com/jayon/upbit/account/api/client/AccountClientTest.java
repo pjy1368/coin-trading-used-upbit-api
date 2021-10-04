@@ -1,4 +1,4 @@
-package com.jayon.upbit.account.api.application;
+package com.jayon.upbit.account.api.client;
 
 import static com.jayon.upbit.account.api.Constants.UPBIT_GET_ACCOUNTS_URL;
 import static org.assertj.core.api.Assertions.assertThat;

@@ -1,7 +1,6 @@
 package com.jayon.upbit.account.ui;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.jayon.upbit.account.api.application.AccountClient;
+import com.jayon.upbit.account.api.client.AccountClient;
 import com.jayon.upbit.account.dto.AccountResponse;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
@@ -16,7 +15,7 @@ public class AccountController {
     private final AccountClient accountClient;
 
     @GetMapping("/accounts")
-    public ResponseEntity<List<AccountResponse>> showAllAccounts() throws JsonProcessingException {
+    public ResponseEntity<List<AccountResponse>> showAllAccounts() {
         return ResponseEntity.ok(accountClient.getAccounts());
     }
 }

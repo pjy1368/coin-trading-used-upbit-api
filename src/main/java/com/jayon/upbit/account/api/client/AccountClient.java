@@ -1,14 +1,12 @@
-package com.jayon.upbit.account.api.application;
+package com.jayon.upbit.account.api.client;
 
 import static com.jayon.upbit.account.api.Constants.UPBIT_GET_ACCOUNTS_URL;
 
-import com.fasterxml.jackson.core.JsonProcessingException;
-import com.fasterxml.jackson.core.type.TypeReference;
-import com.fasterxml.jackson.databind.ObjectMapper;
 import com.jayon.upbit.account.dto.AccountResponse;
 import com.jayon.upbit.auth.infrastructure.JwtTokenProvider;
 import java.util.List;
 import lombok.RequiredArgsConstructor;
+import org.springframework.core.ParameterizedTypeReference;
 import org.springframework.http.HttpEntity;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpMethod;
@@ -22,16 +20,15 @@ public class AccountClient {
 
     private final JwtTokenProvider jwtTokenProvider;
     private final RestTemplate restTemplate;
-    private final ObjectMapper objectMapper;
 
-    public List<AccountResponse> getAccounts() throws JsonProcessingException {
+    public List<AccountResponse> getAccounts() {
         HttpHeaders headers = new HttpHeaders();
         headers.setBearerAuth(jwtTokenProvider.createToken());
         headers.setContentType(MediaType.APPLICATION_JSON);
 
-        HttpEntity<String> entity = new HttpEntity<>(headers);
-        String response = restTemplate.exchange(UPBIT_GET_ACCOUNTS_URL, HttpMethod.GET, entity, String.class).getBody();
-        return objectMapper.readValue(response, new TypeReference<>() {
-        });
+        HttpEntity<?> entity = new HttpEntity<>(headers);
+        return restTemplate.exchange(UPBIT_GET_ACCOUNTS_URL, HttpMethod.GET, entity,
+            new ParameterizedTypeReference<List<AccountResponse>>() {
+            }).getBody();
     }
 }
