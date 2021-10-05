@@ -1,6 +1,5 @@
 package com.jayon.upbit.account.api.client;
 
-import static com.jayon.upbit.account.api.Constants.UPBIT_GET_ACCOUNTS_URL;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.springframework.test.web.client.match.MockRestRequestMatchers.requestTo;
 import static org.springframework.test.web.client.response.MockRestResponseCreators.withSuccess;
@@ -61,10 +60,11 @@ class AccountClientTest {
     @Test
     void getAccounts() throws JsonProcessingException {
         String expectedResult = objectMapper.writeValueAsString(accountResponses);
-        mockServer.expect(requestTo(UPBIT_GET_ACCOUNTS_URL))
+        mockServer.expect(requestTo(AccountClient.ACCOUNTS_URL))
             .andRespond(withSuccess(expectedResult, MediaType.APPLICATION_JSON));
 
         List<AccountResponse> actual = accountClient.getAccounts();
         assertThat(actual).hasSize(accountResponses.size());
+        assertThat(actual.get(0).getBalance()).isEqualTo(accountResponses.get(0).getBalance());
     }
 }

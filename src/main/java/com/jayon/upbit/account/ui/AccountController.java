@@ -14,7 +14,7 @@ public class AccountController {
 
     private final AccountClient accountClient;
 
-    @GetMapping("/accounts")
+    @GetMapping("/api/v1/accounts")
     public ResponseEntity<List<AccountResponse>> showAllAccounts() {
         return ResponseEntity.ok(accountClient.getAccounts());
     }
